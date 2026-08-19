@@ -51,4 +51,21 @@
 // view is user interface ko handle karta hai aur user ko data dikhata hai.
 //  controller is handling logic between model and view ko handle karta hai.
 
+
 // 4 folders banate hai MVC me, model, view, controller aur routes.
+
+//_________________________________________________________________________________________________________________________
+
+//model - controller p - fir route p - fir index.js p - fir server start hoga aur client ko response milega.
+//this is bottom to top approach prefferable
+
+const express = require("express");
+const app = express();
+const tourRoute = require("./routes/tourRoute");
+
+app.use(express.json()); //app.use is for middleware , authentication and autherization purpose
+app.use('/api', tourRoute);
+
+app.listen(7000, () => {
+  console.log("Server is running on port 7000");
+});
