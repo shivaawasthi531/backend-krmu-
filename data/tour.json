@@ -7,13 +7,6 @@
     "duration": "5 days"
   },
   {
-    "id": 2,
-    "name": "Mountain Adventure",
-    "description": "Explore the stunning mountains and go hiking.",
-    "price": 2000,
-    "duration": "7 days"
-  },
-  {
     "id": 3,
     "name": "City Explorer",
     "description": "Discover the vibrant city life and cultural landmarks.",

@@ -27,17 +27,33 @@ const update = (id, updatedData) => {
     tours[index] = { ...tours[index], ...updatedData, id };
     fs.writeFileSync(toursFilePath, JSON.stringify(tours, null, 2));//id ko updayte karne ke liye writeFileSync ka use kiya hai
     return tours[index];
+
 };
+const deleteTour = (id) => {
+    const tours = getAll();
+    const index = tours.findIndex(tour => tour.id === id);
+    if(index == -1){
+        return null;
+    }
+    tours.splice(index,1);
+    fs.writeFileSync(toursFilePath, JSON.stringify(tours, null, 2));
+    return true;
+}
+
 
 const save = (tour) => {
     const tours = getAll();
     tours.push(tour);
     fs.writeFileSync(toursFilePath, JSON.stringify(tours, null, 2));
 };
+//Model is the backbone of the CRUD operation where we have all access get,post,put
+//user wale k liye y pura 
 
 module.exports = {
     getAll,
     getById,
     getByQuery,
+    update,
+    deleteTour,
     save
 };//
