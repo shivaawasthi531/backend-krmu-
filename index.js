@@ -61,6 +61,9 @@
 
 const express = require("express");
 const app = express();
+
+const morgan = require("morgan");
+app.use(morgan("dev")); //morgan is a logger tool which is used to log the request and response in the console for debugging purpose.
 const tourRoute = require("./routes/tourRoute");
 
 app.use(express.json()); //app.use is for middleware , authentication and autherization purpose
@@ -69,3 +72,7 @@ app.use('/api', tourRoute);
 app.listen(7000, () => {
   console.log("Server is running on port 7000");
 });
+//logger is tool keeping the log of the request and response in the console for debugging purpose.
+//  It is a middleware function that is called before the request is sent to the controller. 
+// It is used to log the request and response in the console for debugging purpose.
+//logger tool is MOrgan as readymate tool 
