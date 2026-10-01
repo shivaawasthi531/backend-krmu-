@@ -32,3 +32,33 @@ const process = require('process');
 console.log(process.env.PORT);
 console.log(process.argv);
 //environment label variable 
+//process object is 
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  if (req.url === '/yes') {
+    res.writeHead(204);
+    res.end();
+    
+  } else if (req.url === '/') {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write('<h1>Hello, world</h1>');
+    res.write('<p>This is a simple HTTP server created using Node.js.</p>');
+    res.end();
+  }else if (req.url === '/about ') {
+    const data = {
+      message: 'This is some sample data from the API.',    
+    };
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(data));
+  }
+  else {
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.end('404 Not Found');
+  }
+});
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
